@@ -1,6 +1,15 @@
 body {
-	background-color: #F0FFFF;
-  margin: 25px 10%;
+	background-color: #F8F4F4;
+
+  margin: 100px auto;
+  padding: 0 10%;
+  max-width: 800px;
+
+  font-family: Mononoki, Open Sans, Sans, Arial;
+  text-align: justify;
+  line-height: 1.5em;
+  font-size: 1.1em;
+  color: #454545;
 }
 
 p {
@@ -8,9 +17,10 @@ p {
 }
 
 h1 {
-	color: #003333;
-	font-family: serif;
-	font-size: 1.8em;
+  padding: 1em;
+
 	font-variant: small-caps;
   text-align: center;
+  line-height: 1em;
+	font-size: 2em;
 }
