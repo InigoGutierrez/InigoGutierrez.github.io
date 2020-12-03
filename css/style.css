@@ -37,6 +37,10 @@ h1, .navbar {
   float: left;
 }
 
+.navbar .liright {
+  float: right;
+}
+
 .navbar li a {
   display: block;
   color: black;
