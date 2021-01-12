@@ -1,5 +1,5 @@
 body {
-	background-color: #FAF4F4;
+	background-color: #17212B;
 
   margin: 80px auto;
   padding: 0 10%;
@@ -9,7 +9,15 @@ body {
   text-align: left;
   line-height: 1.5em;
   font-size: 1.1em;
-  color: #454545;
+  color: #A6B0B9;
+}
+
+a:link {
+  color:lightblue;
+}
+
+a:visited {
+  color: #D7B3FF;
 }
 
 h1 {
@@ -22,7 +30,8 @@ h1 {
 }
 
 h1, .navbar {
-	background-color: #F8F8FF;
+  color: #CBD7E1;
+	background-color: #2B5278;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -43,7 +52,7 @@ h1, .navbar {
 
 .navbar li a {
   display: block;
-  color: black;
+  color: #CBD7E1;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -51,6 +60,10 @@ h1, .navbar {
 
 .navbar li:hover {
   background-color: #C8E8FF;
+}
+
+.navbar li:hover a {
+  color: #17212B;
 }
 
 p {
