@@ -1,4 +1,3 @@
 # My personal page
 
-This is the repository for my [Github Page](https://pages.github.com/),
-automatically deployed [here](https://inigogutierrez.github.io/).
+This is the repository for my personal page, deployed at https://taamas.xyz
