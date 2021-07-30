@@ -1,0 +1,124 @@
+<head>
+<meta charset="UTF-8">
+<title>
+Abandonando WhatsApp
+</title>
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+</head>
+<body>
+<h1 id="construyendo-un-teclado">Construyendo un teclado</h1>
+<p>En Febrero de 2021 decidí construir un teclado mecánico. Comparto aquí mis motivaciones, el camino que seguí y unas cuantas imágenes del proceso de construcción.</p>
+<p>Me parece importante destacar que escribo desde el punto de vista de alguien que aprendió mecanografía antes de cumplir 11 años. Esto significa que escribo reposando los dedos en posiciones concretas (sobre la fila central de letras, con los índices sobre las teclas F y J en un teclado QWERTY) y apenas muevo las manos a no ser que necesite usar alguna tecla lejana como las flechas o el Escape. Algunas de mis necesidades y críticas a los teclados convencionales seguramente no sean aplicables a quien teclee con un movimiento más libre de las manos.</p>
+<h2 id="índice">Índice</h2>
+<p>sed: -e expression #1, char 6: unknown command: `k’</p>
+<h2 id="por-qué-construir-un-teclado-propio">¿Por qué construir un teclado propio?</h2>
+<p>En el aspecto práctico, el diseño de los teclados convencionales es criticable en varios aspectos. Un teclado personalizado y más artesanal presenta soluciones a estos problemas de diseño además de otras interesantes ventajas.</p>
+<h3 id="alineación-de-las-teclas">Alineación de las teclas</h3>
+<p>Las teclas están alineadas horizontalmente en filas con cierto desfase entre ellas. Esto es un vestigio de las máquinas de escribir, en las que este desfase facilitaba la colocación de las palancas de cada tecla. Esto provoca que las teclas de las que se encarga cada dedo formen una diagonal que no es simétrica entre las manos: los dedos de la mano izquierda se deben extender hacia fuera y contraer hacia dentro, mientras que los de la mano derecha deben moverse al contrario. En mi caso personal empecé a sentir que a veces fallo al pulsar una tecla por tener que buscar el ángulo exacto en que se encuentra. Además, ¿por qué las partes más modernas de los teclados, como el teclado numérico, no tienen este desfase?</p>
+<p>Así que quise probar un teclado ortolinear, en el que las teclas están alineadas en una rejilla de ángulos rectos (como un teclado numérico), o uno columnar, en el que las teclas tienen un desfase entre columnas y no entre filas para compensar la distinta longitud de cada dedo.</p>
+<h3 id="pulgares-desaprovechados">Pulgares desaprovechados</h3>
+<p>Los dedos más fuertes se limitan a pulsar la tecla espaciadora, compartida además entre ambos, y algunos modificadores que no están en posiciones demasiado cómodas, sobre todo los de las esquinas. Mejor encontrar un teclado que aproveche mejor los dedos más fuertes y retire trabajo de los sobrecargados meñiques.</p>
+<h3 id="lesiones">Lesiones</h3>
+<p>Teniendo en cuenta que el teclado es una herramienta que utilizo para trabajar, estudiar y en cualquier momento en el que uso el ordenador en general, es importante asegurarse de que sea cómoda de usar. El tener las manos tan cerca la una de la otra giradas en un ángulo que no es el de reposo implica molestias musculares y puede llevar a lesiones como la del túnel carpiano.</p>
+<p>Una de las formas de aliviar esto es mediante el uso de un teclado partido, en el que cada mano utiliza una pieza diferente las cuales pueden ser separadas para tener una distancia cómoda entre las manos y evitar cargar también los hombros.</p>
+<p>Otra posibilidad es la inclinación de las mitades del teclado. En un teclado plano de una sola pieza las muñecas se colocan en un ángulo forzado. Si puedes hacerlo, coloca tus manos en el aire frente a ti como si fueras a usar un teclado, pero buscando el ángulo natural, el más cómodo posible. Comprobarás que ahora las palmas de tus manos no están paralelas al suelo, sino que, aunque no totalmente, en cierto grado se enfrentan la una a la otra. Notarás ahora que el ángulo de uso de un teclado convencional es un ángulo forzado. Quizá no se note con un uso ligero o si las manos no se mantienen en contacto con las teclas como en la técnica de la mecanografía, pero puedo asegurar que se generan molestias en las muñecas y no en poco tiempo.</p>
+<h3 id="modularidad">Modularidad</h3>
+<p>Una ventaja añadida de un teclado más artesanal que no tiene tanto que ver con su uso directo suele ser su modularidad. El teclado está compuesto de partes más independientes e intercambiables y además gracias al proceso de construcción sabemos cuáles son estas partes, cuál es su función y cómo encajan entre sí. Esto permite combatir en cierta medida la cultura consumista del usar y tirar, teniendo que sustituir sólo aquellos componentes que realmente se han estropeado y consiguiendo un teclado con una vida útil mucho mayor. ¿El cable se ha roto? Mi teclado usa un cable USB-A a microUSB-B (el típico cable que viene, o hasta hace poco tiempo venía, con los cargadores de móvil), nada más fácil de sustituir. ¿Una tecla deja de funcionar? Puede que el interruptor se haya estropeado: puede quitarse y sustituirse por otro sin necesidad de ninguna herramienta. En mi caso alguno de los LEDs no funcionaban cuando terminé la construcción: desmontar la carcasa y resoldarlos fue cuestión de minutos.</p>
+<p>Tirar un teclado entero y comprar uno nuevo por cualquiera de estos fallos puntuales es un despropósito.</p>
+<h3 id="configuración">Configuración</h3>
+<p>QMK (Quantum Mechanical Board) es un proyecto abierto de código libre para escribir el firmware de un teclado (el firmware es el software que controla un dispositivo físico). Es enormemente modular y existen configuraciones para muchos teclados, además de haber herramientas gráficas para facilitar la configuración.</p>
+<p>Gracias a este proyecto podemos asignar las teclas como queramos. Permite repartir los símbolos en capas, de forma que las teclas de las letras pueden convertirse en un teclado numérico al mantener una tecla, o las teclas HJKL o WASD en las flechas, o cualquier otra configuración que se nos ocurra. También ofrece formas novedosas de aprovechar las teclas, por ejemplo que se comporten de forma distinta al pulsarse o al mantenerse: la misma tecla puede ser el Intro o el Control según la pulsemos, o el tabulador o un acceso a otra capa; combinar teclas en una sola, para que una sola tecla sea Ctrl + Shift, o Super (Windows) + Shift + Control + Alt y tener en una tecla un modificador para configuraciones personalizadas que ninguna aplicación en su sano juicio usaría.</p>
+<h2 id="escogiendo-teclado">Escogiendo teclado</h2>
+<p>Cuando se busca un teclado personalizado las posibilidades son abrumadoras. Un vistazo a los teclados compatibles con el firmware QMK, disponible en https://github.com/qmk/qmk_firmware/tree/master/keyboards, deja hacerse una idea: hay 658 teclados incluidos en el momento de escribir estas palabras. Existe una gran comunidad de aficionados y profesionales que se dedican a diseñar y construir teclados, cada uno con sus motivaciones y necesidades.</p>
+<p>En mi caso he escogido el Kyria rev1.3 (revisión 1.3). Los motivos han sido que se trata de un teclado:</p>
+<ul>
+<li>Separado.</li>
+<li>Columnar.</li>
+<li>Compatible con el firmware QMK.</li>
+<li>Un número de teclas muy reducido, que me permitiría probar si realmente me es viable usar completamente un teclado manteniendo siempre la posición de mecanografía.</li>
+<li>Con una distribución que me resultó intuitiva al probarla en papel: Las teclas de los pulgares del tamaño mínimo y colocadas a lo largo del arco natural del dedo y las teclas de letras para el resto de dedos. Nada más que eso.</li>
+</ul>
+<p>También me llamaron la atención algunas características extra. En primer lugar todas las teclas tienen el mismo tamaño, que es el tamaño estándar para una letra. Esto evita tener que adquirir y colocar los estabilizadores que se usan para evitar el bamboleo en teclas más grandes y además permite intercambiar libremente las tapas de los interruptores sin tener que tener varias de distintos tamaños. El teclado permite además añadirle dos codificadores rotatorios y dos pequeñas pantallas OLED de 128x64 pixels, uno de cada para cada mitad del teclado. Más cosas estrambóticas para montar un teclado propio, ¡genial!</p>
+<h2 id="construyendo-el-kyria">Construyendo el Kyria</h2>
+<figure>
+<img src="../../img/kyria/01_materiales.webp" alt="Materiales y herramientas para construir el teclado." /><figcaption aria-hidden="true">Materiales y herramientas para construir el teclado.</figcaption>
+</figure>
+<p>Aunque no pretendo hacer de esto un tutorial, dejo aquí la lista de ingredientes del teclado como referencia y para quien le pueda interesar. Estos son los que he usado para mi construcción particular: hay unas cuantas partes del teclado que se pueden montar de distintas maneras o incluso ignorar.</p>
+<ul>
+<li>Dos PCB (Printed Circuit Board, placa de circuito impreso). Estas han sido diseñadas y son distribuidas por el diseñador en su tienda de https://splitkb.com/</li>
+<li>50 diodos, uno por cada tecla.</li>
+<li>10 LEDs RGB para añadir iluminación al teclado. La luz se emite hacia la parte de atrás y se difumina a través de la carcasa para crear un efecto de fondo.</li>
+<li>Dos puertos TRRS (como el típico jack de unos auriculares pero con cuatro pines o zonas en lugar de tres).</li>
+<li>Dos botones para usar como botón de reseteo en cada mitad del teclado.</li>
+<li>Cuatro resistencias, necesarias si se usan pantallas OLED.</li>
+<li>Dos microcontroladores. En mi caso dos Pro Micro, pero pueden usarse otros.</li>
+<li>Dos pantallas OLED de 128x64, que son completamente opcionales.</li>
+<li>Dos codificadores rotatorios, que son también opcionales. Se los compré al diseñador del teclado e incluyen tapas y llaves Allen para ajustarlas.</li>
+<li>48 interruptores, uno para cada tecla. El teclado tiene como máximo 50 teclas, pero codificador rotatorio ocupa el lugar de una de ellas.</li>
+<li>48 tapas para los interruptores.</li>
+<li>Una carcasa para cada mitad. En mi caso, una de perfil bajo que difunde la luz de los LEDs. Vendidas por el diseñador junto con tornillos para colocarla. En principio también podría imprimirse con una impresora 3D.</li>
+<li>Un cable TRRS para conectar las dos mitades.</li>
+<li>Un cable para conectar el teclado al dispositivo con el que se quiera usar.</li>
+</ul>
+<p>Para realizar este proyecto hace falta un soldador. Soldar no es un proceso difícil, pero conviene tener algo de práctica para evitar dañar algún componente y que después de todo el trabajo el teclado no funcione como es debido. También son útiles unas pinzas para manipular los componentes más pequeños y asegurar que quedan bien en su sitio, y unas pequeñas tenazas para cortar las patas de los diodos y las resistencias.</p>
+<p>Terminado el que probablemente sea uno de los preámbulos más largos de la historia, llegan por fin las fotos del proceso de construcción.</p>
+<figure>
+<img src="../../img/kyria/02_pcbDiodos.webp" alt="PCB y diodos." /><figcaption aria-hidden="true">PCB y diodos.</figcaption>
+</figure>
+<p>El primer paso es colocar los diodos. Estos son componentes eléctricos simples que permiten el paso de la corriente en un solo sentido. Se colocan uno por cada interruptor y supongo que para algo servirán. Yo solo seguí instrucciones.</p>
+<figure>
+<img src="../../img/kyria/03_diodos.webp" alt="Primeros diodos soldados." /><figcaption aria-hidden="true">Primeros diodos soldados.</figcaption>
+</figure>
+<p>¡Primeros componentes soldados! Las posiciones de los diodos vienen marcadas en el circuito como D1, D2, D3, etc. En la imagen se ven los cuatro primeros ya en su sitio y los huecos para algunos más.</p>
+<figure>
+<img src="../../img/kyria/04_leds.webp" alt="Todos los diodos colocados." /><figcaption aria-hidden="true">Todos los diodos colocados.</figcaption>
+</figure>
+<p>Con todos los diodos en su sitio es hora de soldar los LEDs. “LED” son las siglas de “Light Emitting Diode”, “diodo emisor de luz”, así que este paso en realidad consiste en soldar más diodos pero de otra manera.</p>
+<figure>
+<img src="../../img/kyria/05_trssReset.webp" alt="Entrada TRRS, botón de reset y resistencias." /><figcaption aria-hidden="true">Entrada TRRS, botón de reset y resistencias.</figcaption>
+</figure>
+<p>Tras los LEDs se sueldan la entrada TRRS por la que se conectan las mitades del teclado, el botón de reset y las dos resistencias necesarias para la pantalla OLED. En la imagen se ve también un trozo de celo que usé como marcador para no confundir los lados de arriba y abajo de la PCB.</p>
+<figure>
+<img src="../../img/kyria/06_ledsDiodos.webp" alt="Leds y diodos ya soldados." /><figcaption aria-hidden="true">Leds y diodos ya soldados.</figcaption>
+</figure>
+<p>Aquí se ven soldados los diodos y los LEDs. Esta es la parte de atrás de la PCB, la contraria a la que llevará los interruptores de las teclas. La entrada TRRS, el botón de reset y las resistencias van en la parte de delante, y en esta foto se ven solo sus pines y el estaño con el que están soldados sobresaliendo por atrás, en la parte izquierda de la PCB.</p>
+<figure>
+<img src="../../img/kyria/07_baseDelMicro.webp" alt="Base para los pines del microcontrolador." /><figcaption aria-hidden="true">Base para los pines del microcontrolador.</figcaption>
+</figure>
+<figure>
+<img src="../../img/kyria/08_pinesParaElMicro.webp" alt="Patas cortados de los diodos para hacer de pines del micro." /><figcaption aria-hidden="true">Patas cortados de los diodos para hacer de pines del micro.</figcaption>
+</figure>
+<figure>
+<img src="../../img/kyria/09_microColocado.webp" alt="Microcontrolador soldado y quitable." /><figcaption aria-hidden="true">Microcontrolador soldado y quitable.</figcaption>
+</figure>
+<p>Esta es una parte delicada: colocar el microcontrolador. En la primera imagen se ven ya soldados unos soportes que permitirán quitar el microcontrolador en caso de querer cambiarlo sin necesidad de desoldarlo, lo que sería realmente difícil.</p>
+<p>Después, como el microcontrolador no tiene pines de por sí, se aprovechan las patas cortadas de los diodos del primer paso, atravesando con ellas los agujeros del micro y los soportes. Luego estas patas se sueldan al micro, se cortan y se comprueba que puede quitarse y ponerse de nuevo. El celo es para evitar que el estaño de soldar entre en los soportes y los suelde a los pines.</p>
+<p>Tras este paso me costó mucho quitar el micro aún sin que se hubiera soldado nada, así que puede que hiciera algo mal. Además, en la segunda mitad del teclado me encontré que a uno de los soportes le faltaba la pieza metálica, así que soldé directamente la pata del diodo y ahora el micro está completamente soldado por una pata. Ups.</p>
+<p>En la última imagen, salvando la mala calidad porque no enfocaba bien el móvil, se ve el micro ya colocado y con sus pines soldados y recortados. Todos sus componentes quedan en la parte de abajo y por arriba solo vemos el bonito circuito azul de su parte de atrás.</p>
+<figure>
+<img src="../../img/kyria/10_pantalla.webp" alt="Pantalla OLED soldada." /><figcaption aria-hidden="true">Pantalla OLED soldada.</figcaption>
+</figure>
+<p>La pantalla OLED se coloca encima del microcontrolador y en contacto físico con él, por lo que se le pone una capa de cinta aislante por detrás para evitar cortocircuitos.</p>
+<figure>
+<img src="../../img/kyria/11_codificadores.webp" alt="Codificadores rotatorios." /><figcaption aria-hidden="true">Codificadores rotatorios.</figcaption>
+</figure>
+<p>Aquí se ven los dos codificadores rotatorios con sus dos tapas. Uno de ellos es lineal, por lo que ofrece la misma resistencia en todo el giro, y el otro es táctil, por lo que se nota un clic con cada paso que da. Uno de cada para probar un poco de todo. Tienen 30 activaciones por vuelta, y la idea es que cada activación equivale a la pulsación de una tecla. He tenido que escribir codificadores rotatorios más veces de las que me gustaría. ¿No suena fatal?</p>
+<figure>
+<img src="../../img/kyria/12_switch.webp" alt="Un interruptor en posición de soldar." /><figcaption aria-hidden="true">Un interruptor en posición de soldar.</figcaption>
+</figure>
+<p>Llegando casi al final, es hora de colocar los interruptores. Aquí se ve uno colocado listo para ser soldado, atravesando la carcasa del teclado (azul) y la PCB, arriba del todo. En lugar de soldar los interruptores directamente usé unos pequeños “enchufes” para poner y quitar los interruptores “en caliente” (estoy traduciendo sobre la marcha según me sale) llamados Mill-Max Hot-Swap Sockets. La idea es soldar estos en lugar de los interruptores para luego poder quitarlos y ponerlos sin tener que desoldar. Muy prácticos, pero un poco difíciles de soldar. Son las dos pequeñas patitas doradas que apenas se ven sobresaliendo de la PCB sobre el interruptor.</p>
+<figure>
+<img src="../../img/kyria/13_interruptores.webp" alt="Interruptores colocados." /><figcaption aria-hidden="true">Interruptores colocados.</figcaption>
+</figure>
+<p>Una vez colocados todos los tubitos dorados podemos colocar los interruptores que queremos usar, encajados a través de la parte de arriba de la carcasa. Los de la imagen son Gazzew Boba U4 Silent, unos interruptores táctiles y silenciosos.</p>
+<figure>
+<img src="../../img/kyria/14_tapas.webp" alt="Tapas colocadas." /><figcaption aria-hidden="true">Tapas colocadas.</figcaption>
+</figure>
+<p>Lo único que queda ya es colocar las tapas en los interruptores ¡y listo! Construcción terminada. Sólo queda repetir los mismos pasos con la otra mitad. Menos mal que fue un proceso muy divertido.</p>
+<figure>
+<img src="../../img/kyria/15_terminado1.webp" alt="Teclado terminado." /><figcaption aria-hidden="true">Teclado terminado.</figcaption>
+</figure>
+<figure>
+<img src="../../img/kyria/16_terminado2.webp" alt="Otra imagen del teclado terminado." /><figcaption aria-hidden="true">Otra imagen del teclado terminado.</figcaption>
+</figure>
+</body>
